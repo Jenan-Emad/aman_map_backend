@@ -2,7 +2,6 @@ const { dbConnection } = require("../config");
 const mongoose = require("mongoose");
 
 const hazardSchema = new mongoose.Schema({
-  hazardId: { type: String, required: true, unique: true },
   geometry: {
     type: {
       type: String,
@@ -17,7 +16,7 @@ const hazardSchema = new mongoose.Schema({
   colorCode: { type: String, required: true },
   updatedAt: { type: Date, default: Date.now },
   relatedReports: {
-    type: [ObjectId],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Report" }],
   },
 });
 

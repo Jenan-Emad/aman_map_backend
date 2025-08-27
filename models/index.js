@@ -3,6 +3,6 @@ const Hazard = require('./Hazard');
 module.exports = {
     Device: require('./Devices'),
     Report: require('./Report'),
-    VerificationLog: require('./VerificationLog'),
+    Log: require('./Log'),
     Hazard: require('./Hazard')
 }

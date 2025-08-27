@@ -2,9 +2,9 @@ const { dbConnection } = require("../config");
 const mongoose = require("mongoose");
 
 const deviceSchema = new mongoose.Schema({
-  deviceId: { type: String, required: true, unique: true },
   deviceType: { type: String, required: true },
-  ipAddress: { type: String, required: true },
+  ipAddress: { type: String, required: true, unique: true },
+  visitorId: { type: String, required: true, unique: true }, // this is the unique id from fingerprintjs library
   lastActive: { type: Date, default: Date.now },
   location: {
     type: {
