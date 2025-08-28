@@ -20,10 +20,12 @@ const reportSchema = new mongoose.Schema({
   },
   reportedByDevice: { type: String, required: true },
   status: { type: String, enum: ["pending", "verified", "rejected"] },
-  confirmations: [
-    {deviceId: { type: mongoose.Schema.Types.ObjectId, ref: "Device" },
-    reportType: { type: String, enum: ["document", "report", "end"], required: true },}
-  ],
+  confirmations: [{ type: mongoose.Schema.Types.ObjectId, ref: "Device" }],
+  verificationSummary: {
+    documentCount: { type: Number, default: 0 },
+    reportCount: { type: Number, default: 0 },
+    endCount: { type: Number, default: 0 },
+  },
   createdAt: { type: Date, default: Date.now },
 });
 

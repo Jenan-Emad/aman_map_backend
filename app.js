@@ -1,8 +1,11 @@
 const express = require('express');
+const mapRoutes = require('./routes');
+
 const app = express();
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
+//test of how to get user ip address
 app.get('/get-ip', (req, res) => {
   // Get client IP
   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
@@ -16,6 +19,7 @@ app.get('/home', (req, res, next) => {
 
 const axios = require('axios');
 
+//test of how to get user device location
 app.get('/check-location', async (req, res) => {
   // Get IP from headers or socket
   let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
@@ -37,5 +41,7 @@ app.get('/check-location', async (req, res) => {
     res.status(500).send("Error checking location");
   }
 });
+
+app.use('/map', mapRoutes); 
 
 module.exports = app;
