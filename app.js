@@ -1,5 +1,6 @@
 const express = require('express');
 const mapRoutes = require('./routes');
+const { WebServiceClient } = require('@maxmind/geoip2-node');
 
 const app = express();
 
@@ -17,30 +18,6 @@ app.get('/home', (req, res, next) => {
     res.send('<h1>Welcome to the Home Page</h1>');
 });
 
-const axios = require('axios');
-
-//test of how to get user device location
-app.get('/check-location', async (req, res) => {
-  // Get IP from headers or socket
-  let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-
-  // For localhost testing, replace loopback with your real IP
-  if (ip === '::1' || ip === '127.0.0.1') {
-    ip = '8.8.8.8'; // Example: Google’s public DNS IP for testing
-  }
-
-  try {
-    const response = await axios.get(`https://ipinfo.io/${ip}/json`);
-
-    console.log(response.data);
-    res.json({ location: response.data });
-
-
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error checking location");
-  }
-});
 
 app.use('/map', mapRoutes); 
 
