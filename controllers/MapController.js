@@ -62,6 +62,23 @@ res.send("<h1>welcome to add hazard</h1>");
 //     });
 // });
 
+//testing succeeded
+// const createUserTest = async (req, res, next) => {
+//     try {   
+//         const deviceData = {
+//             ipAddress: "8.8.8.8",
+//             visitorId: "test-visitor-id-12345",
+//             location: { type: "Point", coordinates: [34.0522, 31.2437] } // Example coordinates (lng, lat)
+//         }
+//         const newDevice = new Device(deviceData);
+//         await newDevice.save();
+//         return res.status(201).json({ message: "Device created", user: newDevice });
+
+//     } catch (error) {
+//         console.error("Error creating user:", error);
+//         return res.status(500).json({ message: "Internal server error" });
+//     }
+// }
 
 
 module.exports = {
