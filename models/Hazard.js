@@ -30,6 +30,7 @@ const hazardSchema = new mongoose.Schema({
   },
   colorCode: { type: String, required: true },
   updatedAt: { type: Date, default: Date.now },
+
   relatedReports: [{ type: mongoose.Schema.Types.ObjectId, ref: "Report" }],
 });
 
