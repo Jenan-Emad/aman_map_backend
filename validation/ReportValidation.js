@@ -19,6 +19,4 @@ const schema = Joi.object({
   createdAt: Joi.date(),
 });
 
-model.exports = function validateReport(data) {
-  return schema.validate(data);
-};
+module.exports = (report) => schema.validate(report);

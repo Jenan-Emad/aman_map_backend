@@ -1,7 +1,6 @@
-const Hazard = require('./Hazard');
 
 module.exports = {
-    Device: require('./Devices'),
+    Device: require('./Device'),
     Report: require('./Report'),
     Log: require('./Log'),
     Hazard: require('./Hazard')

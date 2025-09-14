@@ -12,10 +12,8 @@ const schema= Joi.object({
         endRequestCount: Joi.number().default(0)
     }),
     colorCode: Joi.string().required(),
-    relatedReports: Joi.array().items(Joi.string().hex().length(24).required()),
+    relatedReports: Joi.array().items(Joi.string().hex().length(24)),
     updatedAt: Joi.date()
 });
 
-model.exports = function validateHazard(data) {
-    return schema.validate(data);
-}
+module.exports = (hazard) => schema.validate(hazard);

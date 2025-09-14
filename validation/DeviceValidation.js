@@ -11,6 +11,4 @@ const schema= Joi.object({
     }).required()
 });
 
-model.exports = function validateDevice(data) {
-    return schema.validate(data);
-}
+module.exports = (device) => schema.validate(device);

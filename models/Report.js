@@ -44,7 +44,7 @@ reportSchema.statics.validateNotConfirmed = async function (
 ) {
   const report = await this.findById(reportId);
   if (!report) {
-    throw new Error("Report not found");
+    return true; // Report does not exist
   }
 
   for (let confirm of report.confirmations) {

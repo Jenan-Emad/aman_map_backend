@@ -1,11 +1,10 @@
-const express = require('express');
-const mapController = require('../controllers/MapController')
+const DeviceRoute = require("./device");
+const HazardRoutes = require("./hazard");
 
-const router = express.Router();
+module.exports = (app) => {
+    app.use("/hazards", HazardRoutes),
+    app.use("/devices", require("./device")),
+    app.use("/logs", require("./log")),
+    app.use("/reports", require("./report"))
+}
 
-router.get('/addHazard', mapController.addHazard)
-    .get('/documentHazard', mapController.documentHazard)
-    .get('/reportHazard', mapController.reportHazard)
-    .get('/endHazard', mapController.endHazard)
-
-module.exports =  router;
